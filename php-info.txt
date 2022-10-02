@@ -1,0 +1,212 @@
+sudo apt install apache2
+sudo systemctl start apache2
+sudo systemctl enable apache2
+
+
+php7.4 libapache2-mod-php7.4 openssl php-imagick php7.4-common php7.4-curl php7.4-gd php7.4-imap php7.4-intl php7.4-json php7.4-ldap php7.4-mbstring php7.4-pgsql php-ssh2 php7.4-xml php7.4-zip unzip
+
+sudo nano /var/www/html/info.php
+
+<?php echo phpinfo(); ?>
+
+sudo systemctl restart apache2
+
+----------
+uname -a
+echo "System: "`lsb_release -d --short` `uname -m` 
+----------
+SLIM
+
+cd /storage/works/hexlet/slim/
+
+drwxrwxr-x  4 mkaro mkaro  4096 Sep 26 12:35  .
+drwxrwxr-x  3 mkaro mkaro  4096 Sep 26 17:20  ..
+drwxrwxr-x  4 mkaro mkaro  4096 Sep 26 14:28  public
+drwxrwxr-x 11 mkaro mkaro  4096 Sep 26 12:34  vendor
+-rw-rw-r--  1 mkaro mkaro   180 Sep 26 12:29  composer.json
+-rw-rw-r--  1 mkaro mkaro 40754 Sep 26 12:29  composer.lock
+-rw-r--r--  1 mkaro mkaro    56 Sep 26 12:20  Makefile
+-rw-r--r--  1 mkaro mkaro     0 Sep 26 12:28 '!root'
+
+composer require slim/slim slim/psr7 slim/http slim/php-view php-di/php-di
+make start
+
+cd /storage/works/hexlet/slim/public/
+
+drwxrwxr-x 4 mkaro mkaro 4096 Sep 26 14:28 .
+drwxrwxr-x 4 mkaro mkaro 4096 Sep 26 12:35 ..
+drwxrwxr-x 2 mkaro mkaro 4096 Sep 26 18:01 example
+drwxrwxr-x 8 mkaro mkaro 4096 Sep 26 18:03 .git
+-rw-rw-r-- 1 mkaro mkaro   41 Sep 27  2021 .gitignore
+-rw-r--r-- 1 mkaro mkaro 1272 Sep 26 18:22 index.php
+-rw-r--r-- 1 mkaro mkaro   76 Sep 26 14:02 README.md
+-rw-r--r-- 1 mkaro mkaro  253 Sep 26 17:46 users.php
+
+git init
+git add .
+$ git commit -m "init"
+$ git branch -M main
+
+Create repo in GitHub manully before!! hexlet-slim-example
+use just main branch !!
+
+$ git remote add origin https://github.com/ichar/hexlet-slim-example.git
+$ git push -u origin main
+
+---------------------------
+
+Update repository:
+
+$ git add .
+$ git status
+$ git commit -m "info"
+$ git push -u origin main
+
+---------------------------
+
+Add or Remove repository:
+
+$ git remote add origin https://github.com/ichar/hexlet-slim-example.git
+$ git rm -f --cached hexlet-slim-example
+
+
+php -S localhost:8080
+
+sudo lsof -i :8080
+
+http://localhost:8080/
+
+
+|-public
+|- example
+|-templates
+|-vendor
+|-|-composer
+|-|-fig
+|-|-laravel
+|-|-nikic
+|-|-php-di
+|-|-psr
+|-|-ralouphie
+|-|-slim
+|-|-symfony
+|-|-autoload.php
+|-composer.json
+|-composer.lock
+|-Makefile
+
+-------------
+SYMFONY
+Setup Composer & Symfony for PHP7
+---------------------------------
+apache:
+https://symfony.com.ua/doc/current/setup/web_server_configuration.html
+
+ symfony new my_project_name --version=5.4
+ symfony new my_project_name --version=lts
+ composer create-project symfony/skeleton:"^5.4" my_project_name
+
+
+cd /storage/www/apps/orion
+symfony check:requirements
+symfony new dbviewer --version=5.4 --full
+cd dbviewer
+php bin/console about
+php bin/console debug:router
+symfony server:start
+
+http://127.0.0.1:8000/
+
+-----------
+https://symfony.com.ua/doc/current/quick_tour/the_big_picture.html
+
+Install Symfony 5.4
+
+curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | sudo -E bash
+sudo apt install symfony-cli
+composer require symfony/web-server-bundle --dev ^4.4.2
+composer create-project symfony/skeleton:"^5.4" quick_tour
+cd quick_tour/
+composer install
+composer require server --dev
+composer require symfony/flex
+composer require logger
+composer require --dev debug
+composer require twig
+composer require symfony/var-dumper
+composer require symfony/asset
+composer require doctrine/annotations
+
+symfony check:requirements
+symfony check:security
+php bin/console about
+
+symfony server:start
+
+php bin/console debug:router
+php bin/console debug:router <route name>
+php bin/console router:match /user/mkaro
+
+
+
+-----------
+DJANGO
+
+class Post(models.Model):
+    """A blog post."""
+
+    title = models.CharField(max_length=200)
+    body = models.TextField(null=True)
+    published = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at =  models.DateTimeField(auto_now=True)
+
+    class Meta:
+        abstract = True
+
+----------
+Добрый день.
+к сожалению, ваш сайт не очень удобен для работы.
+Например:
+отбор (фильтрация) топиков в обсуждении. Нажимая кнопку Поиск, вы делаете сабмит! и обновляете страницу целиком, вместо того, чтобы обновить только результаты поиска. Особенно неудобно при работе со смартфона. Страница рефрешится целиком и открывается с самого начала, и я опять вижу главное меню, хотя жду результаты выборки. Нужно опять скролировать и искать что же она там нашла. Часто раздел пустой, ничего не нашла, хотя топики есть! Список курсов тоже обновляется крайне неоднозначно, выбираю  тему, например, PHP, какой курс внутри справочника непонятно, найдешь нужный, не факт что обновишься.
+
+В уроках допускаются ошибки, например:
+1. Курс Вэб-разработка PHP, шаблонизатор.
+Пример не работает, не выполняется загрузка библиотеки DI\Container.
+
+В тексте примера нет сроки с атозагрузкой и вы указываете на ошибку ученика!:
+```
+// Подключение автозагрузки через composer
+require __DIR__ . '/../vendor/autoload.php';
+```
+
+2. Python Django ORM
+Настройка Django ORM
+
+Не учтено, что установка может быть выполнена только для версии Poetry 1.2.1, если я проходил обучение на ваших курсах ранее и у меня уже установлен более ранний Poetry, я буду долго искать причину дефекта.
+
+Чтобы открыть Ответы на ваши тесты в упражнениях нужно ждать 20 минут, что совершенно ни к чему.
+Получить ссылку на ответ в Обсуждении (комментарии) с сайта тоже возможности нет.
+
+WEB-доступ в упражнениях часто не выводит результаты, а тесты оставляют желать лучшего. Открыть упражнение крайне сложно, нужно опять идти в курс, пройти его заново, только после этого появится возможность попасть в код упражнения. Хотелось бы, чтобы такая возможность была бы непосредственно в разделе Обсуждения. Пройти упражение тоже не всегда легко... из-за ошибок в ваших тестах или каких-то надуманных требований.
+
+Ответы менторов приходится ждать достаточно долго, понимаю, что я не один, но несколько суток - это долго.
+
+И вообще багов на сайте много. Например Профайл, вы знаете, что доступ в Телеграм может быть получен по имени(Username), а не только по номеру телефона? Хеш-тег ваша страница не принимает.
+
+89031777195
+@mkarox
+
+Отредактировать свой блог нельзя, кнопка есть, а возможности сохранить изменения нет (на модерации).
+
+С уважением,
+mkaroх
+
+
+------------
+Какое еще короткое описание?  Заголовка недостаточно?
+Кнопка Предпросмотр даже здесь в этом разделе, в Блоге студента не работает! Хорошо, что хоть не скидывает набранный текст.
+
+
+
+

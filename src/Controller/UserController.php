@@ -10,7 +10,7 @@ class UserController extends AbstractController
 {
 
     /**
-     * @Route("/user/{name}")
+     * @Route("/user/{name}") #, name="notifications"
      */
 
     public function notifications(string $name = '...'): Response
