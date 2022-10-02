@@ -1,0 +1,17 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+# имя маршрута "app_lucky_number" пока не важно
+
+app_lucky_number:
+    path: /lucky/number
+    controller: App\Controller\LuckyController::number
+
+blog_list:
+    path: /blog
+    # значение контроллера ммеет формат 'controller_class::method_name'
+    controller: App\Controller\BlogController::list
+
+    # еслм действие реализуется как метод __invoke() класса контроллера,
+    # вы можете пропустить часть '::method_name':
+    # controller: App\Controller\BlogController
