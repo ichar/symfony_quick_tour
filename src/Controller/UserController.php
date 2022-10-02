@@ -10,13 +10,13 @@ class UserController extends AbstractController
 {
 
     /**
-     * @Route("/user")
+     * @Route("/user/{name}")
      */
 
-    public function notifications(): Response
+    public function notifications(string $name = '...'): Response
     {
         // получить информацию пользователя и уведомления каким-то образом
-        $userFirstName = '...';
+        $userFirstName = $name;
         $userNotifications = ['...', '...'];
 
         // путь шаблона - это относительн путь файла из `templates/`
